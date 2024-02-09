@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Caudex&display=swap');
+
+#title {
+    font-family: 'Caudex', Serif;
+}
+
+.MuiTextField-root {
+    color: red !important;
+    background-color: white;
+}
