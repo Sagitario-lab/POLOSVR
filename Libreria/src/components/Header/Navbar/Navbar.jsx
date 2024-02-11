@@ -1,4 +1,4 @@
-import {Badge, Box, Button, ButtonGroup, Grid, Icon, Modal, Typography, useMediaQuery} from "@mui/material";
+import {Badge, Box, Button, ButtonGroup, Grid, Icon, Modal, useMediaQuery} from "@mui/material";
 import InstagramIcon from '@mui/icons-material/Instagram';
 import {ROUTES} from "../../../constants/ROUTES.js";
 import {useNavigate} from "react-router-dom";
@@ -13,10 +13,6 @@ export const Navbar = () => {
     //navigation
     const navigate = useNavigate();
     const navigateTo = (route) => navigate(route);
-    //consultas modal
-    const [openConsulta, setOpenConsulta] = useState(false);
-    const handleOpenConsulta = () => setOpenConsulta(true);
-    const handleCloseConsulta = () => setOpenConsulta(false);
     //lista de libros modal
     const [openLista, setOpenLista] = useState(false);
     const handleOpenLista = () => setOpenLista(true);
@@ -67,25 +63,41 @@ export const Navbar = () => {
 
                     {matches && <Grid item xs={12}>
                         <Grid container height={'100%'} padding={1} justifyContent={'center'}>
-                            <Grid item xs={2} md={12} display={'flex'} justifyContent={'space-evenly'}
-                                  alignItems={'center'}>
+                            <Grid
+                                item
+                                xs={2}
+                                md={12}
+                                display={'flex'}
+                                justifyContent={'space-evenly'}
+                                alignItems={'center'}
+                            >
                                 <Box>
                                     Redes:
                                 </Box>
-                                <Icon
-                                    component={InstagramIcon}
-                                    sx={{width: '30px', height: '30px'}}
-                                ></Icon>
+                                <Box color={'grey'}>
+                                    <a
+                                        href={'https://www.instagram.com/polosvr/'}
+                                        target="_blank" rel="noreferrer"
+                                    >
+                                        <Icon
+                                            component={InstagramIcon}
+                                            sx={{width: '30px', height: '30px', color: 'grey'}}
+                                        ></Icon>
+                                    </a>
+                                </Box>
                             </Grid>
                             <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}
                                   sx={{marginY: '5px'}}>
-                                <Button
-                                    variant={'contained'}
-                                    onClick={() => handleOpenConsulta()}
-                                    color={'grey'}
-                                >
-                                    Info consultas!
-                                </Button>
+                                <Grid container textAlign={'center'}>
+                                    <Grid item xs={12}>
+                                        Consultas!
+                                    </Grid>
+                                    <Grid item xs={12} fontWeight={600}>
+                                        <a href={'mailto:polosvr@protonmail.com'} style={{color: 'grey'}}>
+                                            polosvr@protonmail.com
+                                        </a>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>}
@@ -119,62 +131,39 @@ export const Navbar = () => {
                             </Button>
                         </ButtonGroup>
                     </Grid>
+
                     {!matches && <Grid item xs={2}>
                         <Grid container height={'100%'} padding={1}>
                             <Grid item xs={12} display={'flex'} justifyContent={'space-evenly'} alignItems={'center'}>
                                 <Box>
                                     Redes:
                                 </Box>
-                                <Icon
-                                    component={InstagramIcon}
-                                    sx={{width: '30px', height: '30px'}}
-                                ></Icon>
+                                <Box color={'grey'}>
+                                    <a href={'https://www.instagram.com/polosvr/'} target="_blank" rel="noreferrer">
+                                        <Icon
+                                            component={InstagramIcon}
+                                            sx={{width: '30px', height: '30px', color: 'grey'}}
+                                        ></Icon>
+                                    </a>
+                                </Box>
                             </Grid>
                             <Grid item xs={12} display={'flex'} justifyContent={'center'} alignItems={'center'}
                                   sx={{marginY: '5px'}}>
-                                <Button variant={'contained'} onClick={() => handleOpenConsulta()}
-                                        color={'grey'}
-                                > Info
-                                    consultas!</Button>
+                                <Grid container textAlign={'center'}>
+                                    <Grid item xs={12}>
+                                        Consultas
+                                    </Grid>
+                                    <Grid item xs={12} fontWeight={600}>
+                                        <a href={'mailto:polosvr@protonmail.com'} style={{color: 'grey'}}>
+                                            polosvr@protonmail.com
+                                        </a>
+                                    </Grid>
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Grid>}
                 </Grid>
             </Grid>
-            <Modal
-                open={openConsulta}
-                onClose={handleCloseConsulta}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Grid container>
-                        <Grid item xs={12} display={'flex'} justifyContent={'center'}>
-                            <Typography variant={'h4'}>Consulte aqui!</Typography>
-                        </Grid>
-                        <Grid item xs={12} display={'flex'} justifyContent={'center'}>
-                            <Typography variant={'h5'}>E-mail</Typography>
-                        </Grid>
-                        <Grid item xs={12} display={'flex'} justifyContent={'center'}>
-                            <ul>
-                                <li>direcciondecorreo@gmail.com</li>
-                                <li>direcciondecorreo@gmail.com</li>
-                                <li>direcciondecorreo@gmail.com</li>
-                            </ul>
-                        </Grid>
-                        <Grid item xs={12} display={'flex'} justifyContent={'center'}>
-                            <Typography variant={'h5'}>Telefonos</Typography>
-                        </Grid>
-                        <Grid item xs={12} display={'flex'} justifyContent={'center'}>
-                            <ul>
-                                <li>(+54) 9 11 5867-4923</li>
-                                <li>(+54) 9 11 5867-4923</li>
-                                <li>(+54) 9 11 5867-4923</li>
-                            </ul>
-                        </Grid>
-                    </Grid>
-                </Box>
-            </Modal>
 
             <Modal
                 open={openLista}
